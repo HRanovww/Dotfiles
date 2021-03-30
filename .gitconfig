@@ -1,0 +1,9 @@
+[user]
+	name = Haoranovww
+	email = 2016300030051@whu.edu.cn
+[core]
+	editor = vim
+[color]
+	status = auto
+	branch = auto
+	diff = auto
