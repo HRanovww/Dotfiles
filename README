@@ -5,3 +5,5 @@ Need a .bash to symbolic link these configs to their right place.
 .vimrc -> ~/.vimrc
 .tmux.config -> ~/.tmux.config
 .gitconfig -> ~/.gitconfig
+
+And we changed the default alias of the remote repo (origin -> Dotfiles).
