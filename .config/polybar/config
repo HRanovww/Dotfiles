@@ -1,0 +1,219 @@
+[bar/mybar]
+    background = #d01d1f21
+    foreground = #b6a49b
+    width                   = 100%
+    height                  = 3.5%
+    radius                  = 0
+    line-size               = 0
+    bottom                  = false
+    border-bottom-size      = 0
+    padding-left            = 0
+    padding-right           = 0
+    #module-margin-left     = 1
+    #module-margin-right    = 1
+
+    fixed-center = true
+    font-0 = "CaskaydiaCove Nerd Font:size=14;1"
+    font-1 = "WenQuanYi Zen Hei Mono:size=14;1"
+
+    modules-left = i3
+    modules-center =
+    modules-right = eth wlan cpu memory battery volume date poweroff 
+    module-margin = 2
+
+    tray-position = none
+    tray-maxsize = 24
+    tray-detached = false
+    tray-transparent = false
+    tray-padding = 2
+    tray-scale = 1.0
+
+    override-redirect = false
+    offset-x = 2900
+    offset-y = 20
+
+    padding = 0
+
+[module/date]
+    type = internal/date
+    interval = 1
+
+    label = %date%  %time%
+    ;label-foreground = #9A32DB
+
+    ;format-background = #55ff3399
+    ;format-foreground = #fff
+
+    time = %H:%M
+    time-alt = %H:%M:%S
+
+    date =
+    date-alt =  %Y/%m/%d,%a
+
+[module/volume]
+    type = internal/volume
+    mapped = true
+    format-volume =   <ramp-volume>  <label-volume>
+    label-volume = %percentage:3%%
+    label-muted = MUTE
+    format-muted-prefix = "婢  "
+    ;format-muted-prefix-foreground = #00f
+    ramp-volume-0 = 
+    ramp-volume-1 = 
+    ramp-volume-2 = 
+    ;ramp-volume-foreground = #00f
+    
+[module/poweroff]
+    type = custom/script
+    exec = echo "  "
+    click-left = rofi -modi run,drun,window -show drun
+    ; try to write a script to randomly select locking paper
+    click-right = i3lock &
+    ; try to write a script to logout
+    ; click-middle = /usr/bin/rofi-logout
+    ;format-padding = 1
+
+[module/eth]
+    type = internal/network
+    interface = enp2s0
+    interval = 3.0
+    
+    format-connected = <label-connected>
+    format-connected-prefix = " ﯱ "
+    format-connected-prefix-foreground = #b6a49b
+    label-connected = %local_ip%  %downspeed:8% 祝 %upspeed:8%
+    label-connected-alt = %ifname%: %downspeed:9%
+
+    
+    format-disconnected = <label-disconnected>
+    format-disconnected-prefix = "  "
+    format-disconnected-prefix-foreground = #b6a49b
+    label-disconnected = 未连接
+    label-disconnected-foreground = #66ffffff
+
+    format-padding = 1
+
+
+[module/wlan]
+    type = internal/network
+    interface = wlp3s0
+    interval = 3.0
+    
+    format-connected = <label-connected>
+    format-connected-prefix = " "
+    format-connected-prefix-foreground = #b6a49b
+    label-connected = %upspeed:5% %downspeed:5%
+    
+    format-disconnected = <label-disconnected>
+    format-disconnected-prefix = "睊 "
+    label-disconnected = 未连接
+    label-disconnected-foreground = #66ffffff
+    format-padding = 0
+
+[module/cpu]
+    type = internal/cpu
+    interval = 3.0
+    format = <label> <ramp-load>
+
+    label = CPU %percentage%%
+
+    ramp-load-0 = ▁
+    ramp-load-1 = ▂
+    ramp-load-2 = ▃
+    ramp-load-3 = ▄
+    ramp-load-4 = ▅
+    ramp-load-5 = ▆
+    ramp-load-6 = ▇
+    ramp-load-7 = █
+
+    ramp-load-0-foreground = #aaff77
+    ramp-load-1-foreground = #aaff77
+    ramp-load-2-foreground = #aaff77
+    ramp-load-3-foreground = #aaff77
+    ramp-load-4-foreground = #fba922
+    ramp-load-5-foreground = #fba922
+    ramp-load-6-foreground = #ff5555
+    ramp-load-7-foreground = #ff5555
+
+[module/memory]
+    type = internal/memory
+    interval = 3.0
+
+    format = <label> <ramp-used>
+    label = RAM %percentage_used%%
+
+    ramp-used-0 = ▁
+    ramp-used-1 = ▂
+    ramp-used-2 = ▃
+    ramp-used-3 = ▄
+    ramp-used-4 = ▅
+    ramp-used-5 = ▆
+    ramp-used-6 = ▇
+    ramp-used-7 = █
+    ramp-used-0-foreground = #aaff77
+    ramp-used-1-foreground = #aaff77
+    ramp-used-2-foreground = #aaff77
+    ramp-used-3-foreground = #aaff77
+    ramp-used-4-foreground = #fba922
+    ramp-used-5-foreground = #fba922
+    ramp-used-6-foreground = #ff5555
+    ramp-used-7-foreground = #ff5555
+
+[module/battery]
+    type = internal/battery
+    full-at = 100
+
+    format-charging = <animation-charging>  <label-charging>
+    format-discharging = <ramp-capacity>  <label-discharging>
+    format-full =   <label-full>
+
+    ramp-capacity-0 = 
+    ramp-capacity-1 = 
+    ramp-capacity-2 = 
+    ramp-capacity-3 = 
+    ramp-capacity-4 = 
+    ramp-capacity-0-foreground = #ff5555
+
+    animation-charging-0 = 
+    animation-charging-1 = 
+    animation-charging-2 = 
+    animation-charging-3 = 
+    animation-charging-4 = 
+    animation-charging-4-foreground = #44ff33
+    animation-charging-3-foreground = #99ff11
+    animation-charging-2-foreground = #ffff44
+    animation-charging-1-foreground = #ff9911
+    animation-charging-0-foreground = #ff5555
+    animation-charging-framerate = 750
+
+[module/i3]
+    type = internal/i3
+
+
+
+    format = <label-state>
+
+    ws-icon-0 = 1;
+    ws-icon-1 = 2;
+    ws-icon-2 = 3;
+    ws-icon-3 = 4;
+    ws-icon-4 = 5;
+    ws-icon-default = 
+
+    local-workspaces = true
+    workspace-name-strip-nchars = 2
+
+    label-focused = %index% %icon%
+    label-focused-background = #3f3f3f
+    label-focused-padding = 2
+    label-visible = %index% %icon%
+    label-visible-padding = 2
+    label-unfocused = %index% %icon%
+    label-unfocused-foreground = #444
+    label-unfocused-padding = 2
+    label-urgent = %index% %icon%
+    label-urgent-background = #bd2c40
+    label-urgent-padding = 2
+
+
+; A mpc/mpd module is waiting for config
