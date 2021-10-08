@@ -1,9 +1,11 @@
 My Dotfiles
 
-Need a .bash to symbolic link these configs to their right place.
+```
+./sync.sh    # Symbolic link the dotfiles to their right place.
+```
 
-.vimrc -> ~/.vimrc
-.tmux.config -> ~/.tmux.config
-.gitconfig -> ~/.gitconfig
+DONE:
+    .vimrc -> ~/.vimrc
 
-And we changed the default alias of the remote repo (origin -> Dotfiles).
+TODO:
+
