@@ -3,6 +3,7 @@ My Dotfiles
 ```
 ./sync.sh    # Symbolic link the dotfiles to their right place.
 ```
+This kind of overwriting has problem, obviously.
 
 DONE:
     .vimrc -> ~/.vimrc

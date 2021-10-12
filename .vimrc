@@ -23,9 +23,9 @@ set autoindent
 
 set encoding=UTF-8
 
-"---------------------
-" Basic editing config
-"---------------------
+""""""""""""""""""""""""
+" Basic editing config "
+""""""""""""""""""""""""
 
 " Disable the default Vim startup message.
 set shortmess+=I
@@ -110,8 +110,6 @@ set foldenable          " enable folding
 set foldlevelstart=10   " open most folds by default
 set foldnestmax=10      " 10 nested fold max
 set foldmethod=indent   " fold based on indent level
-" sapce open/close folds
-" nnoremap <space> za
 
 
 """"""""""""""""""""
@@ -136,10 +134,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tamarin-prover/editors'
+    Plug 'airblade/vim-gitgutter'
 
     Plug 'tpope/vim-fugitive'
+    Plug 'rbong/vim-flog'
     Plug 'tpope/vim-commentary'
     Plug 'SirVer/ultisnips'
+
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
 
 call plug#end()
 
@@ -171,4 +175,18 @@ let NERDTreeShowHidden=1
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsEditSplit="vertical"
+
+
+"""""""""""""""""
+" deoplete.nvim "
+"""""""""""""""""
+let g:deoplete#enable_at_startup = 1
+
+
+"""""""""""""""""
+" vim-gitgutter "
+"""""""""""""""""
+set updatetime=100
+highlight SignColumn ctermbg=NONE
