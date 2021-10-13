@@ -128,12 +128,12 @@ endif
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-    Plug 'preservim/nerdtree' |
+    Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } |
         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
         \ Plug 'ryanoasis/vim-devicons'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'tamarin-prover/editors'
+    Plug 'tamarin-prover/editors', { 'for': ['spthy', 'm4'] }
     Plug 'airblade/vim-gitgutter'
 
     Plug 'tpope/vim-fugitive'
@@ -182,7 +182,7 @@ let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""
 " deoplete.nvim "
 """""""""""""""""
-let g:deoplete#enable_at_startup = 1
+nnoremap <space><space>n :call deoplete#toggle()<CR>
 
 
 """""""""""""""""
