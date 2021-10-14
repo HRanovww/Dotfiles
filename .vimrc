@@ -1,121 +1,109 @@
-" Comments in Vimscript start with a `"`.
-
-" If you open this file in Vim, it'll be syntax highlighted for you.
-
 " Vim is based on Vi. Setting `nocompatible` switches from the default
-" Vi-compatibility mode and enables useful Vim functionality. This
-" configuration option turns out not to be necessary for the file named
-" '~/.vimrc', because Vim automatically enters nocompatible mode if that file
-" is present. But we're including it here just in case this config file is
-" loaded some other way (e.g. saved as `foo`, and then Vim started with
-" `vim -u foo`).
+" Vi-compatibility mode and enables useful Vim functionality.
 set nocompatible
 
-" Turn on syntax highlighting.
-syntax on
 
-" Show matching braces when text indicator is over them
-set showmatch
+""""""""""""""
+" Appearance "
+""""""""""""""
+    " Turn on syntax highlighting.
+    syntax on
 
-" Enable file type detection
-filetype plugin indent on
-set autoindent
+    " Show matching braces when text indicator is over them
+    set showmatch
 
-set encoding=UTF-8
+    set encoding=UTF-8
 
-""""""""""""""""""""""""
-" Basic editing config "
-""""""""""""""""""""""""
+    " Disable the default Vim startup message.
+    set shortmess+=I
 
-" Disable the default Vim startup message.
-set shortmess+=I
+    " Show line numbers.
+    set number
 
-" Show line numbers.
-set number
+    " Show command in bottom bar
+    set showcmd
 
-" Show command in bottom bar
-set showcmd
+    " Have lines wrap instead of continue off-screen
+    set linebreak
 
-" Visual autocomplete for command menu
-set wildmenu
+    " Always show the status line at the bottom, even if you only have one window open.
+    set laststatus=2
 
-" Have lines wrap instead of continue off-screen
-set linebreak
+    " Disable audible bell because it's annoying.
+    set noerrorbells visualbell t_vb=
 
-" This enables relative line numbering mode. With both number and
-" relativenumber enabled, the current line shows the true line number, while
-" all other lines (above and below) are numbered relative to the current line.
-" This is useful because you can tell, at a glance, what count is needed to
-" jump up or down to a particular line, by {count}k to go up or {count}j to go
-" down.
-" set relativenumber
+    " Open new split panes to right and bottom, which feels more natural
+    set splitbelow
+    set splitright
 
-" Always show the status line at the bottom, even if you only have one window open.
-set laststatus=2
+    " Show lines above and below cursor (when possible)
+    set scrolloff=5
 
-" Show lines above and below cursor (when possible)
-set scrolloff=5
+    colorscheme elflord
+    
 
-" The backspace key has slightly unintuitive behavior by default. For example,
-" by default, you can't backspace before the insertion point set with 'i'.
-" This configuration makes backspace behave more reasonably, in that you can
-" backspace over anything.
-set backspace=indent,eol,start
+""""""""""
+" Search "
+""""""""""
+    " This setting makes search case-insensitive when all characters in the string
+    " being searched are lowercase. However, the search becomes case-sensitive if
+    " it contains any capital letters. This makes searching more convenient.
+    set ignorecase
+    set smartcase
 
-" By default, Vim doesn't let you hide a buffer (i.e. have a buffer that isn't
-" shown in any window) that has unsaved changes. This is to prevent you from
-"
-" forgetting about unsaved changes and then quitting e.g. via `:qa!`. We find
-" hidden buffers helpful enough to disable this protection. See `:help hidden`
-" for more information on this.
-set hidden
+    " Enable searching as you type, rather than waiting till you press enter.
+    set incsearch
 
-" Use 4 spaces instead of tabs during formatting
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-
-" This setting makes search case-insensitive when all characters in the string
-" being searched are lowercase. However, the search becomes case-sensitive if
-" it contains any capital letters. This makes searching more convenient.
-set ignorecase
-set smartcase
-
-" Enable searching as you type, rather than waiting till you press enter.
-set incsearch
-
-" highlight search
-set hls
-
-" Unbind some useless/annoying default key bindings.
-" 'Q' in normal mode enters Ex mode. You almost never want this.
-nmap Q <Nop> 
-
-" Disable audible bell because it's annoying.
-set noerrorbells visualbell t_vb=
-
-" Enable mouse support. You should avoid relying on this too much, but it can
-" sometimes be convenient.
-set mouse+=a
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
+    " highlight search
+    set hlsearch
 
 
-" Folding
-"--------
-set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
-set foldmethod=indent   " fold based on indent level
+"""""""""""""""""""""
+" Syntax & Behavior "
+"""""""""""""""""""""
+    " Enable file type detection
+    filetype plugin indent on
+    set autoindent
+
+    " Visual autocomplete for command menu
+    set wildmenu
+
+    " Use 4 spaces instead of tabs during formatting
+    set expandtab
+    set tabstop=4
+    set shiftwidth=4
+    set softtabstop=4
+
+    " The backspace key has slightly unintuitive behavior by default. For example,
+    " by default, you can't backspace before the insertion point set with 'i'.
+    " This configuration makes backspace behave more reasonably, in that you can
+    " backspace over anything.
+    set backspace=indent,eol,start
+
+    " Allow hidden buffer
+    set hidden
+
+    " Unbind some useless/annoying default key bindings.
+    " 'Q' in normal mode enters Ex mode. You almost never want this.
+    nmap Q <Nop> 
+
+    " Enable mouse support. You should avoid relying on this too much, but it can
+    " sometimes be convenient.
+    set mouse+=a
+
+
+"""""""""""
+" Folding "
+"""""""""""
+    set foldenable          " enable folding
+    set foldlevelstart=10   " open most folds by default
+    set foldnestmax=10      " 10 nested fold max
+    set foldmethod=indent   " fold based on indent level
 
 
 """"""""""""""""""""
 " Vim-Plug Section "
 """"""""""""""""""""
-
 " Automatically install vim-plug
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -123,14 +111,12 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-
 " Specify a directory for plugins
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-
     Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' } |
         \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-        \ Plug 'ryanoasis/vim-devicons'
+        \ Plug 'ryanoasis/vim-devicons' |
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tamarin-prover/editors', { 'for': ['spthy', 'm4'] }
@@ -144,49 +130,57 @@ call plug#begin('~/.vim/plugged')
     Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
-
+    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 call plug#end()
 
 
 """"""""""""""""""""
 " NERDTree Section "
 """"""""""""""""""""
+    " Some shortcuts
+    nnoremap <leader>n: NERDTreeFocus<CR>
+    nnoremap <C-n> :NERDTree<CR>
+    nnoremap <C-t> :NERDTreeToggle<CR>
+    nnoremap <C-f> :NERDTreeFind<CR>
 
-" Some shortcuts
-nnoremap <leader>n: NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+    " Automatically start NERDTree
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd p | endif
 
-" Automatically start NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') | execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | wincmd p | endif
+    " Exit Vim if NERDTree is the onlyh window left.
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" Exit Vim if NERDTree is the onlyh window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-
-" Show the hidden files
-let NERDTreeShowHidden=1
+    " Show the hidden files
+    let NERDTreeShowHidden=1
 
 
 """""""""""""
 " Ultisnips "
 """""""""""""
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsEditSplit="vertical"
+    let g:UltiSnipsExpandTrigger="<tab>"
+    let g:UltiSnipsJumpForwardTrigger="<tab>"
+    let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+    let g:UltiSnipsListSnippets="<c-tab>"
+    let g:UltiSnipsEditSplit="vertical"
 
 
 """""""""""""""""
 " deoplete.nvim "
 """""""""""""""""
-nnoremap <space><space>n :call deoplete#toggle()<CR>
+    nnoremap <space><space>n :call deoplete#toggle()<CR>
 
 
 """""""""""""""""
 " vim-gitgutter "
 """""""""""""""""
-set updatetime=100
-highlight SignColumn ctermbg=NONE
+    set updatetime=100
+    highlight SignColumn ctermbg=NONE
+
+
+""""""""""""""""""""
+" deoplete-tabnine "
+""""""""""""""""""""
+call deoplete#custom#var('tabnine', {
+    \ 'line_limit': 500,
+    \ 'max_num_results': 15,
+    \ })
