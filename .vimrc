@@ -100,6 +100,21 @@ set nocompatible
     set foldnestmax=10      " 10 nested fold max
     set foldmethod=indent   " fold based on indent level
 
+"""""""""""
+" Buffers "
+"""""""""""
+    " Switch buffer
+    nnoremap <silent> [b :bprevious<CR>
+    nnoremap <silent> ]b :bnext<CR>
+    nnoremap <silent> [B :bfirst<CR>
+    nnoremap <silent> ]B :blast<CR>
+
+    " Switch argument
+    nnoremap <silent> [a :previous<CR>
+    nnoremap <silent> ]a :next<CR>
+    nnoremap <silent> [A :first<CR>
+    nnoremap <silent> ]A :last<CR>
+
 
 """"""""""""""""""""
 " Vim-Plug Section "
@@ -127,7 +142,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'SirVer/ultisnips'
 
-    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim',
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
