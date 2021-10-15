@@ -142,7 +142,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'SirVer/ultisnips'
 
-    Plug 'Shougo/deoplete.nvim',
+    Plug 'Shougo/deoplete.nvim'
     Plug 'roxma/nvim-yarp'
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
