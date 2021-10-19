@@ -39,7 +39,7 @@ set nocompatible
     " Show lines above and below cursor (when possible)
     set scrolloff=5
 
-    colorscheme elflord
+    colorscheme koehler
     
 
 """"""""""
@@ -136,10 +136,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tamarin-prover/editors', { 'for': ['spthy', 'm4'] }
     Plug 'airblade/vim-gitgutter'
+    Plug 'unblevable/quick-scope'
 
     Plug 'tpope/vim-fugitive'
-    Plug 'rbong/vim-flog'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'rbong/vim-flog'
     Plug 'SirVer/ultisnips'
 
     Plug 'Shougo/deoplete.nvim'
@@ -199,3 +202,8 @@ call deoplete#custom#var('tabnine', {
     \ 'line_limit': 500,
     \ 'max_num_results': 15,
     \ })
+
+"""""""""""""""
+" quick-scope "
+"""""""""""""""
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
