@@ -1,0 +1,8 @@
+snippet cr "curses wrapper" b:
+def main(stdscr):
+	curses.curs_set(0)
+	$0
+
+
+curses.wrapper(main)
+endsnippet
